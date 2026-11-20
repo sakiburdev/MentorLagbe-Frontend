@@ -132,3 +132,20 @@
     @apply font-sans;
   }
 }
+
+ /* brand colors */
+:root {
+  --primary: oklch(0.511 0.096 186.391);
+  --primary-foreground: oklch(0.985 0 0);
+  --ring: oklch(0.511 0.096 186.391);
+}
+
+.dark {
+  --primary: oklch(0.777 0.152 181.912);
+  --primary-foreground: oklch(0.2 0.03 190);
+  --ring: oklch(0.777 0.152 181.912);
+}
+
+html {
+  scroll-behavior: smooth;
+}
