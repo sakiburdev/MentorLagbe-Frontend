@@ -1,21 +1,19 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
-
 export async function apiFetch(path, options = {}) {
-  let token = null;
-  if (typeof window !== "undefined") {
-    token = localStorage.getItem("ml-token");
-  }
+  const isServer = typeof window === "undefined";
 
-  const res = await fetch(API_URL + path, {
+  const baseUrl = isServer ? process.env.SERVER_URL : "";
+
+  const res = await fetch(`${baseUrl}/api${path}`, {
     ...options,
     cache: "no-store",
+    credentials: "include",
+    
     headers: {
       "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }),
       ...options.headers,
     },
   });
 
-  const data = await res.json();
+  const data = await res.json().catch(() => ({}));
   return { ok: res.ok, data };
 }
