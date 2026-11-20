@@ -4,6 +4,7 @@ import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
 import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,6 +25,8 @@ export default function RootLayout({ children }) {
           <AuthProvider>
           <Navbar/>
             {children}
+
+          <Footer/>
             <Toaster richColors position="top-right" />
           </AuthProvider>
         </ThemeProvider>
