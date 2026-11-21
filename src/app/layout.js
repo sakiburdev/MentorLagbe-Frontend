@@ -3,9 +3,7 @@ import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { Toaster } from "@/components/ui/sonner";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
-
+import SiteShell from "@/components/layout/SiteShell";
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
@@ -23,10 +21,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.className} min-h-full flex flex-col`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <AuthProvider>
-          <Navbar/>
-            {children}
-
-          <Footer/>
+            <SiteShell>{children}</SiteShell>
             <Toaster richColors position="top-right" />
           </AuthProvider>
         </ThemeProvider>
