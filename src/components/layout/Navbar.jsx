@@ -16,13 +16,12 @@ import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import Logo from "@/components/shared/Logo";
 import ThemeToggle from "@/components/shared/ThemeToggle";
-import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Browse Tuitions", href: "/tuitions" },
   { label: "Pricing", href: "/pricing" },
-  { label: "How It Works", href: "/#how-it-works" },
+  { label: "How It Works", href: "/how-it-works" },
   { label: "About", href: "/about" },
 ];
 
@@ -76,7 +75,7 @@ const Navbar = () => {
   };
 
   const avatar = user?.image ? (
-    <Image
+    <img
       src={user.image}
       alt={user.name}
       className="h-9 w-9 rounded-full object-cover"

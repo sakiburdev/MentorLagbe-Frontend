@@ -1,4 +1,6 @@
+
 "use client";
+
 import Link from "next/link";
 import { LuCheck, LuClipboardList, LuClock, LuCrown } from "react-icons/lu";
 import { useFetch } from "@/hooks/useFetch";
@@ -8,9 +10,12 @@ import PageHeader from "@/components/dashboard/PageHeader";
 import PageSkeleton from "@/components/dashboard/PageSkeleton";
 import StatsCard from "@/components/dashboard/StatsCard";
 
-const StudentOverviewPage = () => {
+const StudentDashboardClient = () => {
   const ready = useRequireRole("student");
-  const { data: stats, loading } = useFetch(ready ? "/stats/student" : null);
+
+  const { data: stats, loading } = useFetch(
+    ready ? "/stats/student" : null,
+  );
 
   if (!ready || loading || !stats) return <PageSkeleton />;
 
@@ -32,18 +37,21 @@ const StudentOverviewPage = () => {
           value={stats.total}
           tone="teal"
         />
+
         <StatsCard
           Icon={LuCheck}
           label="Accepted"
           value={stats.accepted}
           tone="sky"
         />
+
         <StatsCard
           Icon={LuClock}
           label="Pending"
           value={stats.pending}
           tone="amber"
         />
+
         <StatsCard
           Icon={LuCrown}
           label="Current Plan"
@@ -58,10 +66,12 @@ const StudentOverviewPage = () => {
             <h3 className="text-lg font-bold">
               Upgrade to Pro for priority booking
             </h3>
+
             <p className="text-sm text-teal-100">
               One-time payment of $10 with Stripe.
             </p>
           </div>
+
           <Link
             href="/pricing"
             className={`${buttonVariants()} bg-amber-400 text-amber-950 hover:bg-amber-300`}
@@ -73,4 +83,5 @@ const StudentOverviewPage = () => {
     </div>
   );
 };
-export default StudentOverviewPage;
+
+export default StudentDashboardClient;

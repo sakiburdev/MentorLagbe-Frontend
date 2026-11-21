@@ -8,7 +8,20 @@ import {
 import { apiFetch } from "@/lib/api";
 import { Badge } from "@/components/ui/badge";
 import ApplyForm from "@/components/tuition/ApplyForm";
-import Image from "next/image";
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const { ok, data: tuition } = await apiFetch(`/tuitions/${id}`);
+
+  if (!ok) {
+    return { title: "Tuition Not Found | MentorLagbe" };
+  }
+
+  return {
+    title: `${tuition.title} | MentorLagbe`,
+    description: tuition.description?.slice(0, 150),
+  };
+}
 
 const TuitionDetailsPage = async ({ params }) => {
   const { id } = await params;
@@ -40,7 +53,7 @@ const TuitionDetailsPage = async ({ params }) => {
       <div className="grid gap-8 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <div className="aspect-video overflow-hidden rounded-2xl">
-            <Image
+            <img
               src={
                 tuition.bannerImage ||
                 "https://picsum.photos/seed/mentorlagbe/800/450"

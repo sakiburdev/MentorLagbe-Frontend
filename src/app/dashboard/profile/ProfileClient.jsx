@@ -11,13 +11,21 @@ import ImageUpload from "@/components/shared/ImageUpload";
 import PageHeader from "@/components/dashboard/PageHeader";
 import StatusBadge from "@/components/dashboard/StatusBadge";
 
-const ProfilePage = () => {
+const ProfileClient = () => {
   const { user, refresh } = useAuth();
-  const [form, setForm] = useState({ name: "", phone: "", bio: "", image: "" });
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    bio: "",
+    image: "",
+  });
+
   const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     if (!user) return;
+
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setForm({
       name: user.name || "",
@@ -25,19 +33,23 @@ const ProfilePage = () => {
       bio: user.bio || "",
       image: user.image || "",
     });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user?.email]);
 
-  const handleChange = (e) =>
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (form.name.trim().length < 2)
+    if (form.name.trim().length < 2) {
       return toast.error("Name must be at least 2 characters");
+    }
 
     setSaving(true);
+
     const { ok, data } = await apiFetch(
       `/users/${encodeURIComponent(user.email)}`,
       {
@@ -52,6 +64,7 @@ const ProfilePage = () => {
     }
 
     await refresh();
+
     setSaving(false);
     toast.success("Profile updated");
   };
@@ -71,6 +84,7 @@ const ProfilePage = () => {
       >
         <div className="space-y-2">
           <Label>Profile Picture</Label>
+
           <ImageUpload
             value={form.image}
             onChange={(url) => setForm({ ...form, image: url })}
@@ -88,6 +102,7 @@ const ProfilePage = () => {
               onChange={handleChange}
             />
           </div>
+
           <div className="space-y-2">
             <Label htmlFor="phone">Phone</Label>
             <Input
@@ -105,6 +120,7 @@ const ProfilePage = () => {
             <Label>Email</Label>
             <Input value={user.email} disabled />
           </div>
+
           <div className="space-y-2">
             <Label>Role / Plan</Label>
             <div className="flex h-9 items-center gap-2">
@@ -133,4 +149,5 @@ const ProfilePage = () => {
     </div>
   );
 };
-export default ProfilePage;
+
+export default ProfileClient;

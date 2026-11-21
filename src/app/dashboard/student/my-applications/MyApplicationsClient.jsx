@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { LuTrash2 } from "react-icons/lu";
 import { toast } from "sonner";
@@ -11,8 +12,9 @@ import PageHeader from "@/components/dashboard/PageHeader";
 import PageSkeleton from "@/components/dashboard/PageSkeleton";
 import StatusBadge from "@/components/dashboard/StatusBadge";
 
-export default function MyApplicationsPage() {
+export default function MyApplicationsClient() {
   const ready = useRequireRole("student");
+
   const {
     data: applications,
     loading,
@@ -25,6 +27,7 @@ export default function MyApplicationsPage() {
     const { ok, data } = await apiFetch(`/applications/${id}`, {
       method: "DELETE",
     });
+
     if (!ok) return toast.error(data.message || "Could not cancel");
 
     toast.success("Application cancelled");
@@ -58,6 +61,7 @@ export default function MyApplicationsPage() {
                 <th className="px-4 py-3 text-right">Action</th>
               </tr>
             </thead>
+
             <tbody className="divide-y">
               {applications.map((item) => (
                 <tr key={item._id}>
@@ -68,25 +72,31 @@ export default function MyApplicationsPage() {
                     >
                       {item.tuitionTitle}
                     </Link>
+
                     <p className="text-xs font-normal text-muted-foreground">
                       {item.subject}
                     </p>
                   </td>
+
                   <td className="px-4 py-3">
                     {item.tutorName}
                     <p className="text-xs text-muted-foreground">
                       {item.tutorEmail}
                     </p>
                   </td>
+
                   <td className="px-4 py-3">
                     ৳{Number(item.monthlyFee).toLocaleString("en-US")}
                   </td>
+
                   <td className="px-4 py-3">
                     {new Date(item.appliedAt).toLocaleDateString("en-GB")}
                   </td>
+
                   <td className="px-4 py-3">
                     <StatusBadge status={item.status} />
                   </td>
+
                   <td className="px-4 py-3 text-right">
                     {item.status === "pending" ? (
                       <Button
@@ -95,7 +105,8 @@ export default function MyApplicationsPage() {
                         className="text-destructive"
                         onClick={() => handleCancel(item._id)}
                       >
-                        <LuTrash2 className="mr-1 h-4 w-4" /> Cancel
+                        <LuTrash2 className="mr-1 h-4 w-4" />
+                        Cancel
                       </Button>
                     ) : (
                       <span className="text-xs text-muted-foreground">-</span>

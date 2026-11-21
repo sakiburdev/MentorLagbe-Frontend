@@ -42,5 +42,5 @@ const AboutPage = () => {
       </div>
     </section>
   );
-}
+};
 export default AboutPage;

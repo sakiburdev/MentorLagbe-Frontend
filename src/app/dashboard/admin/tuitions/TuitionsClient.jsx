@@ -24,7 +24,7 @@ const AdminTuitionsPage = () => {
       method: "PATCH",
       body: JSON.stringify({ approvalStatus }),
     });
-    
+
     if (!ok) return toast.error(data.message || "Could not update");
 
     toast.success(`Tuition ${approvalStatus}`);

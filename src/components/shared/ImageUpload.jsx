@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import { useState } from "react";
 import { LuImagePlus } from "react-icons/lu";
 import { toast } from "sonner";
@@ -39,7 +38,7 @@ export default function ImageUpload({
     <div className="flex items-center gap-4">
       <div className="flex h-24 w-36 shrink-0 items-center justify-center overflow-hidden rounded-xl border bg-muted">
         {value ? (
-          <Image
+          <img
             src={value}
             alt="Preview"
             className="h-full w-full object-cover"

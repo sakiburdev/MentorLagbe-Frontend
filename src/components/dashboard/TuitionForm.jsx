@@ -44,8 +44,8 @@ const TuitionForm = ({ initial, submitLabel, onSubmit }) => {
 
     if (!form.bannerImage) return "Please upload a banner image";
 
-    if (form.description.trim().length < 20)
-      return "Description must be at least 20 characters";
+    if (form.description.trim().length < 30)
+      return "Description must be at least 30 characters";
 
     return null;
   };

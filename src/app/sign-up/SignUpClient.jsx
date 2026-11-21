@@ -93,10 +93,8 @@ const SignUpPage = () => {
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-
         <div className="grid grid-cols-2 gap-3">
           {roles.map(({ value, label, text, Icon }) => (
-
             <button
               key={value}
               type="button"
@@ -158,7 +156,6 @@ const SignUpPage = () => {
               className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
               aria-label="Show or hide password"
             >
-
               {showPassword ? (
                 <LuEyeOff className="h-4 w-4" />
               ) : (
@@ -174,10 +171,8 @@ const SignUpPage = () => {
       </form>
 
       <div className="my-6 flex items-center gap-3 text-xs text-muted-foreground">
-
         <span className="h-px flex-1 bg-border" /> OR{" "}
         <span className="h-px flex-1 bg-border" />
-
       </div>
 
       <GoogleButton />
@@ -193,5 +188,5 @@ const SignUpPage = () => {
       </p>
     </AuthShell>
   );
-}
+};
 export default SignUpPage;

@@ -23,7 +23,6 @@ import { useAuth } from "@/providers/AuthProvider";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/shared/ThemeToggle";
 import StatusBadge from "@/components/dashboard/StatusBadge";
-import Image from "next/image";
 
 // Sidebar
 const menus = {
@@ -98,7 +97,7 @@ const DashboardShell = ({ children }) => {
   };
 
   const avatar = user.image ? (
-    <Image
+    <img
       src={user.image}
       alt={user.name}
       className="h-10 w-10 shrink-0 rounded-full object-cover"

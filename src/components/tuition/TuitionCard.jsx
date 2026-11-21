@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import Image from "next/image";
 
 const TuitionCard = ({ tuition }) => {
   const image =
@@ -10,7 +9,7 @@ const TuitionCard = ({ tuition }) => {
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
       <div className="relative aspect-video overflow-hidden">
-        <Image
+        <img
           src={image}
           alt={tuition.title}
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
