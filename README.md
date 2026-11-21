@@ -8,8 +8,8 @@ MentorLagbe is a full-stack, role-based tuition and mentorship platform. It conn
 - Server:
   
 ## Admin Credentials
-- Email: admin@example.com
-- Password: your-admin-password
+- Email: admin@gmail.com
+- Password: 12As5678
 
 ## Key Features
 - Role-based authentication (Student, Tutor, Admin) with BetterAuth and Google login
