@@ -65,3 +65,4 @@ const TransactionsPage = () => {
     </div>
   );
 };
+export default TransactionsPage;
